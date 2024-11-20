@@ -1,0 +1,15 @@
+<!-- filepath: /c:/Users/ykh2435064/work/django/todo_project/todo/templates/todo/task_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block title %}削除の確認{% endblock %}
+
+{% block content %}
+    <h1>削除の確認</h1>
+    <p>本当に "{{ task.title }}" を削除しますか？</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">はい、削除します</button>
+    </form>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">キャンセル</a>
+    <a href="{% url 'task_contact' task.pk %}" class="btn btn-info">問い合わせ</a>
+{% endblock %}

@@ -1,0 +1,17 @@
+<!-- filepath: /c:/Users/ykh2435064/work/django/todo_project/todo/templates/todo/task_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}タスクフォーム{% endblock %}
+
+{% block content %}
+    <h1>タスクフォーム</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+    <a href="{% url 'task_list' %}" class="btn btn-secondary">タスクリストに戻る</a>
+    {% if form.instance.pk %}
+        <a href="{% url 'task_contact' form.instance.pk %}" class="btn btn-info">問い合わせ</a>
+    {% endif %}
+{% endblock %}

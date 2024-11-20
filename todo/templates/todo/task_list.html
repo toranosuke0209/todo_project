@@ -1,0 +1,19 @@
+<!-- filepath: /c:/Users/ykh2435064/work/django/todo_project/todo/templates/todo/task_list.html -->
+{% extends "base.html" %}
+
+{% block title %}タスクリスト{% endblock %}
+
+{% block content %}
+    <h1>タスクリスト</h1>
+    <a href="{% url 'task_create' %}" class="btn btn-primary">新しいタスクを追加</a>
+    <ul class="list-group mt-3">
+        {% for task in tasks %}
+            <li class="list-group-item">
+                {{ task.title }} - {{ task.description }}
+                <a href="{% url 'task_edit' task.pk %}" class="btn btn-sm btn-warning">編集</a>
+                <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-danger">削除</a>
+                <a href="{% url 'task_contact' task.pk %}" class="btn btn-sm btn-info">問い合わせ</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

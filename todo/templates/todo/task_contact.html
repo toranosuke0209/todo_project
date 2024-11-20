@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block title %}タスク問い合わせ{% endblock %}
+
+{% block content %}
+    <h1>タスク問い合わせ</h1>
+    <p>タスク "{{ task.title }}" に関する問い合わせを送信します。</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="message">メッセージ</label>
+            <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">送信</button>
+    </form>
+{% endblock %}
